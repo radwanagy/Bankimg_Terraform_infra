@@ -1,21 +1,48 @@
-variable "subscription_id" {
-  description = "Azure Subscription ID"
+variable "resource_group_name" {
+  description = "name of resource"
   type        = string
-}
-
-variable "tenant_id" {
-  description = "Azure Tenant ID"
-  type        = string
+  default     = "banking-resource-group"
 }
 
 variable "location" {
-  description = "Azure region for resource deployment"
+  description = "name of location"
   type        = string
   default     = "East US"
 }
 
-variable "resource_group_name" {
-  description = "Name of the resource group"
+variable "storage_account_name" {
+  description ="name of storage account"
   type        = string
-  default     = "ecommerce-rg"
+  default     = "bankinguniquestorage1234"
 }
+
+variable "sql_admin_user" {
+  description = "name of admin user"
+  type        = string
+  default     = "radwa"
+}
+
+variable "sql_admin_password" {
+  description = "password of sql server"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "sql_server_name" {
+  description = "name of sql server "
+  type        = string
+  default     = "banking-sql-server"
+}
+
+variable "sql_database_name" {
+  description = "name of sql database"
+  type        = string
+  default     = "bankingdb"
+}
+variable "container_name" {
+  description = "Name of the Blob container"
+  type        = string
+  default ="bankingcontainer"
+}
+

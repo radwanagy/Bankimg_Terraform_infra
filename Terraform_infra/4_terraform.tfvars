@@ -1,4 +1,8 @@
-resource_group_name = "example-rg"
-sql_server_name     = "example-sqlserver-1234"
-sql_admin_password  = "YourPassword123!"
-allowed_ips         = ["111.111.111.111", "222.222.222.222"]
+resource_group_name    = "banking-resource-group"
+location               = "East US"
+storage_account_name   = "bankinguniquestorage1234"
+sql_admin_user         = "radwa"
+sql_admin_password     = "banking123!"
+sql_server_name        = "banking-sql-server"
+sql_database_name      = "bankingdb"
+container_name = "bankingcontainer"
