@@ -37,3 +37,24 @@ resource "azurerm_sql_database" "database" {
   server_name         = azurerm_sql_server.sql_server.name
   sku_name            = "Basic"
 }
+# Firewall Rule 1 - Allow client IP
+resource "azurerm_sql_firewall_rule" "client_ip_rules" {
+  for_each            = toset(var.client_ips)
+  name                = "AllowClientIP-${each.value}"
+  resource_group_name = azurerm_sql_server.sql_server.resource_group_name
+  server_name         = azurerm_sql_server.sql_server.name
+  start_ip_address    = each.value
+  end_ip_address      = each.value
+}
+
+
+# Firewall Rule 2 - Allow Azure services (conditionally)
+resource "azurerm_sql_firewall_rule" "allow_azure_services" {
+  count               = var.enable_azure_services_access ? 1 : 0
+  name                = "AllowAzureServices"
+  resource_group_name = azurerm_sql_server.sql_server.resource_group_name
+  server_name         = azurerm_sql_server.sql_server.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
+}
+

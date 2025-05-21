@@ -45,4 +45,16 @@ variable "container_name" {
   type        = string
   default ="bankingcontainer"
 }
+variable "client_ips" {
+  description = "List of public IP addresses to whitelist for SQL access"
+  type        = list(string)
+}
+
+
+variable "enable_azure_services_access" {
+  description = "Enable access to SQL Server from Azure services (e.g., Power BI)"
+  type        = bool
+  default     = true
+}
+
 
