@@ -4,5 +4,6 @@
 .terraform/
 crash.log
 4_terraform.tfvars
+5_output.tf
 *.log
 *.backup
