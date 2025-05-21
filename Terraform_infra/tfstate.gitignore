@@ -3,6 +3,6 @@
 *.tfstate.backup
 .terraform/
 crash.log
-terraform.tfvars
+4_terraform.tfvars
 *.log
 *.backup
