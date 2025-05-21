@@ -28,6 +28,7 @@ resource "azurerm_sql_server" "sql_server" {
   version                      = "12.0"
   administrator_login          = var.sql_admin_user
   administrator_login_password = var.sql_admin_password
+   minimal_tls_version          = "1.2"
 }
 
 resource "azurerm_sql_database" "database" {
@@ -35,7 +36,8 @@ resource "azurerm_sql_database" "database" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   server_name         = azurerm_sql_server.sql_server.name
-  sku_name            = "Basic"
+   sku_name            = "Standard"  # "Basic" لا يدعم geo-redundancy-->manuall from azure portal
+  backup_short_term_retention_days = 7
 }
 # Firewall Rule 1 - Allow client IP
 resource "azurerm_sql_firewall_rule" "client_ip_rules" {
